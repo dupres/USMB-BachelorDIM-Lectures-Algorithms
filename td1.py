@@ -144,12 +144,26 @@ def matrix_objectBoundaries(pMatrix):
 def create_charmatrix():
     pWidth = random.randint(2,10)
     pHeight = random.randint(2,10)
-    return numpy.zeros((pWidth,pHeight),dtype=chr)
+    pChar = numpy.chararray((pWidth,pHeight))
+    #Empty pChar
+    for i in xrange(pWidth):
+        for j in xrange(pHeight):
+            pChar[i,j] = ''
+    print(pChar)
+    return pChar
 
 ##
-#Fills    
- #def charmatrix_fillwith(pCharmatrix,pChar,pNumberOfFills):
-    
+#Fills an input char matrix with an input number of 'X'
+def charmatrix_fillwith(pCharmatrix,pNumberOfFills):
+    print(pNumberOfFills)
+    for i in xrange(pNumberOfFills):
+        x = random.randint(0,matrix_dimensions(pCharmatrix)[0]-1)
+        y = random.randint(0,matrix_dimensions(pCharmatrix)[1]-1)
+        while pCharmatrix[x,y] <> '':
+            x = random.randint(0,matrix_dimensions(pCharmatrix)[0]-1)
+            y = random.randint(0,matrix_dimensions(pCharmatrix)[1]-1)
+        pCharmatrix[x,y] = 'X'
+    return pCharmatrix
     
     
     
@@ -157,7 +171,5 @@ def create_charmatrix():
     
 #-------------------------------------------------------------------
 
-pBox = create_matrixWithSquare()
-
-print(pBox)
-print(matrix_objectBoundaries(pBox))
+pCharmatrix = create_charmatrix()
+print(charmatrix_fillwith(pCharmatrix,random.randint(1,len(pCharmatrix))))
