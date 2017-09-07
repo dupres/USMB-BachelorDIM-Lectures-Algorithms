@@ -5,6 +5,7 @@ Created on Thu Sep 07 09:50:14 2017
 """
 
 import random
+import numpy
 
 ##
 #Small function describing an input list
@@ -66,8 +67,35 @@ def create_list():
     for i in xrange(pListLen):
         pList.append(random.randint(-100,100))
     return pList
-        
-#print('Max value is '+str(list_max(pList)))
-pList = create_list()
-print(pList)
-print(list_reverse(pList))
+
+##
+#Creates a random boolean matrix with random limits between 2 and 10
+def create_matrix():
+    pWidth = random.randint(2,10)
+    pHeight = random.randint(2,10)
+    
+    pMatrix = numpy.zeros((pWidth,pHeight))
+    
+    for i in xrange(pWidth):
+        for j in xrange(pHeight):
+            pMatrix[i,j] = random.randint(0,1)
+    return pMatrix
+
+##
+#Small function giving the boundaries of a matrix
+#@param input matrix : the matrix to analyze
+#throws an exception (ValueError) on an empty matrix
+def matrix_boundaries(pMatrix):
+    #First check : if matrix width or height is 0
+    if len(pMatrix) == 0:
+        raise ValueError('Matrix length should not be 0')
+    elif len(pMatrix[0]) == 0:
+        raise ValueError('Matrix length should not be 0')
+    return len(pMatrix), len(pMatrix[0])
+
+#-------------------------------------------------------------------
+
+pBox = create_matrix()
+
+print(pBox)
+print(matrix_boundaries(pBox))
