@@ -29,18 +29,23 @@ def list_analysis(pList):
 ##
 #Small function giving the maximum value of a list
 def list_max(pList):
+    #First check
+    if len(pList)==0:
+        raise ValueError('List length should not be 0')
     #Variables initialization
-    pMaxValue = -10000000
-    for i in pList:
-        if pMaxValue<i:
-            pMaxValue = i
-    print('MaxValue is '+str(pMaxValue))
-
+    pMaxValue = pList[0]
+    pMaxIndex = 0
+    for i in xrange(len(pList)):
+        if pMaxValue<pList[i]:
+            pMaxValue = pList[i]
+            pMaxIndex = i
+    print('MaxValue is '+str(pMaxValue)+' at index '+str(pMaxIndex))
+    return pMaxValue
 #Random input list
 pList = []
 pListLen = random.randint(50,100)
 for i in xrange(pListLen):
     pList.append(random.randint(-100,100))
 
-list_max(pList)
+print('Max value is '+str(list_max(pList)))
 
