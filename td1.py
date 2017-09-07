@@ -164,12 +164,21 @@ def charmatrix_fillwith(pCharmatrix,pNumberOfFills):
             y = random.randint(0,matrix_dimensions(pCharmatrix)[1]-1)
         pCharmatrix[x,y] = 'X'
     return pCharmatrix
-    
-    
-    
-    
-    
+
+##
+#Removes whitespaces in a string
+#@param input string : the string to check
+def remove_whitespaces(pString):
+    pLength = len(pString)
+    i = 0
+    while i < pLength :
+        print(i)
+        if pString[i] == ' ':
+            pString = pString[0:i] + pString[i+1:len(pString)]
+            pLength = pLength - 1
+        i = i+1
+    return pString
+
 #-------------------------------------------------------------------
 
-pCharmatrix = create_charmatrix()
-print(charmatrix_fillwith(pCharmatrix,random.randint(1,len(pCharmatrix))))
+print(remove_whitespaces("Ceci est une phrase avec plein d'espaces."))
