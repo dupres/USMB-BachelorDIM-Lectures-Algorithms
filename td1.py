@@ -26,11 +26,21 @@ def list_analysis(pList):
     print('There is '+str(pPositiveCount)+' positive values and '+str(pNegativeCount)+' negative values in this array. The average is '+str(pAverage)+'.')
 
 
+##
+#Small function giving the maximum value of a list
+def list_max(pList):
+    #Variables initialization
+    pMaxValue = -10000000
+    for i in pList:
+        if pMaxValue<i:
+            pMaxValue = i
+    print('MaxValue is '+str(pMaxValue))
+
 #Random input list
 pList = []
-pListLen = random.randint(1,100)
-for i in pListLen:
-    pList[i]=random.randint(-100,100)
+pListLen = random.randint(50,100)
+for i in xrange(pListLen):
+    pList.append(random.randint(-100,100))
 
-list_analysis(pList)
+list_max(pList)
 
