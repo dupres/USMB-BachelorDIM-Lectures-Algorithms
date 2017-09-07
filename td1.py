@@ -74,7 +74,7 @@ def create_matrix():
     pWidth = random.randint(2,10)
     pHeight = random.randint(2,10)
     
-    pMatrix = numpy.zeros((pWidth,pHeight))
+    pMatrix = numpy.zeros((pWidth,pHeight),dtype=int)
     
     for i in xrange(pWidth):
         for j in xrange(pHeight):
@@ -82,10 +82,26 @@ def create_matrix():
     return pMatrix
 
 ##
-#Small function giving the boundaries of a matrix
+#Creates an empty boolean matrix with random limits between 2 and 10
+#and with inside a 3*3 square made of true values
+def create_matrixWithSquare():
+    pWidth = random.randint(3,10)
+    pHeight = random.randint(3,10)
+    pSquarePosX = random.randint(0,pWidth-3)
+    pSquarePosY = random.randint(0,pHeight-3)
+    pSquareDim = 3
+    
+    pMatrix = numpy.zeros((pWidth,pHeight),dtype=int)
+    for i in xrange(pSquareDim):
+        for j in xrange(pSquareDim):
+            pMatrix[pSquarePosX + i,pSquarePosY + j] = 1
+    return pMatrix
+    
+##
+#Small function giving the dimensions of a matrix
 #@param input matrix : the matrix to analyze
 #throws an exception (ValueError) on an empty matrix
-def matrix_boundaries(pMatrix):
+def matrix_dimensions(pMatrix):
     #First check : if matrix width or height is 0
     if len(pMatrix) == 0:
         raise ValueError('Matrix length should not be 0')
@@ -93,9 +109,55 @@ def matrix_boundaries(pMatrix):
         raise ValueError('Matrix length should not be 0')
     return len(pMatrix), len(pMatrix[0])
 
+##
+#Finds the boundaries of a square inside a matrix
+#@param input matrix : the matrix to analyze
+#throws an exception (ValueError) on an empty matrix
+def matrix_objectBoundaries(pMatrix):
+    #First check : if matrix width or height is 0
+    if len(pMatrix) == 0:
+        raise ValueError('Matrix length should not be 0')
+    elif len(pMatrix[0]) == 0:
+        raise ValueError('Matrix length should not be 0')
+    #Variables initialization
+    pLeftTopBoundary = [0,0]
+    pRightBottomBoundary = [0,0]
+    pWidth = matrix_dimensions(pMatrix)[0]
+    pHeight = matrix_dimensions(pMatrix)[1]
+    
+    i=0
+    j=0
+    while i < pWidth:
+        while j < pHeight:
+            if pMatrix[i,j]<>0 and pLeftTopBoundary[0] == 0 and pLeftTopBoundary[1] == 0:
+                pLeftTopBoundary = [i,j]
+            if pMatrix[pWidth-i-1,pHeight-j-1]<>0 and pRightBottomBoundary[0] == 0 and pRightBottomBoundary[1] == 0:
+                pRightBottomBoundary = [pWidth-i-1,pHeight-j-1]
+            j=j+1
+        i=i+1
+    
+    return [pLeftTopBoundary,pRightBottomBoundary]
+
+
+##
+#Creates a random empty char matrix between 2 and 10 columns and rows
+def create_charmatrix():
+    pWidth = random.randint(2,10)
+    pHeight = random.randint(2,10)
+    return numpy.zeros((pWidth,pHeight),dtype=chr)
+
+##
+#Fills    
+ #def charmatrix_fillwith(pCharmatrix,pChar,pNumberOfFills):
+    
+    
+    
+    
+    
+    
 #-------------------------------------------------------------------
 
-pBox = create_matrix()
+pBox = create_matrixWithSquare()
 
 print(pBox)
-print(matrix_boundaries(pBox))
+print(matrix_objectBoundaries(pBox))
