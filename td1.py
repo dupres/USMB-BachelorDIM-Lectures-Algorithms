@@ -172,12 +172,12 @@ def remove_whitespaces(pString):
     pLength = len(pString)
     i = 0
     while i < pLength :
-        print(i)
         if pString[i] == ' ':
             pString = pString[0:i] + pString[i+1:len(pString)]
             pLength = pLength - 1
         i = i+1
     return pString
+
 
 #-------------------------------------------------------------------
 
