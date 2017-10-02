@@ -1,7 +1,7 @@
 import td1
 
 def test_remove_whitespaces():
-    assert remove_whitespaces("a b") == "ab"
+    assert td1.remove_whitespaces("a b") == "ab"
     
 def test_list_max():
-    assert list_max([1,2,3]) == [3,2]
+    assert td1.list_max([1,2,3]) == [3,2]
