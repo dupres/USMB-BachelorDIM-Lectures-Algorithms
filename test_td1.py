@@ -1,4 +1,4 @@
-import td1.py
+import td1
 
 def test_remove_whitespaces():
     assert remove_whitespaces("a b") == "ab"
