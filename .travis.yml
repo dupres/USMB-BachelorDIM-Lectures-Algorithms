@@ -7,8 +7,6 @@ install:
 addons:
   sonarcloud:
     organization: dupres-github
-    token:
-        secure: 9b1d079ad2f7405747bbff90b184665c45455c65
 script:
   - pytest --cov .
   - sonar-scanner
