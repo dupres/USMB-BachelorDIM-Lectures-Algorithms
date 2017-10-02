@@ -1,6 +1,6 @@
-import td1
+import td1.py
 
-def test_whitespace():
+def test_remove_whitespaces():
     assert remove_whitespaces("a b") == "ab"
     
 def test_list_max():
