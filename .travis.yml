@@ -12,3 +12,4 @@ addons:
 script:
   - pytest --cov .
   - sonar-scanner
+  - coveralls
