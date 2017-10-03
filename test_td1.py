@@ -15,5 +15,11 @@ def test_remove_whitespaces_empty():
 def test_remove_whitespaces__a_b_():
     assert td1.remove_whitespaces(" a b ") == "ab"    
     
-def test_list_max():
+def test_list_max_1_2_3():
     assert td1.list_max([1,2,3]) == (3,2)
+
+def test_list_max_empty():
+    assert td1.list_max([]) == (3,2)
+	
+def test_list_max_3_2_1():
+    assert td1.list_max([3,2,1]) == (3,0)
