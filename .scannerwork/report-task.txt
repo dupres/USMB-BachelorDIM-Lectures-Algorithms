@@ -1,0 +1,7 @@
+organization=dupres-github
+projectKey=dupres
+serverUrl=https://sonarcloud.io
+serverVersion=6.5.0.27571
+dashboardUrl=https://sonarcloud.io/dashboard/index/dupres
+ceTaskId=AV5buijAzsTf1U4IR_uT
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=1PfPxrtijPyMAF32dxq1
