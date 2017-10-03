@@ -215,4 +215,4 @@ def remove_whitespace(pString):
 
 #-------------------------------------------------------------------
 
-print(remove_whitespaces("Ceci est une phrase avec plein d'espaces."))
+print(remove_whitespace("Ceci est une phrase avec plein d'espaces."))
