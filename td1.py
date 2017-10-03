@@ -139,9 +139,9 @@ def roi_bbox(pMatrix):
     j=0
     while i < pWidth:
         while j<pHeight:
-            if coordXTopLeft == 0 and pMatrix[i,j]=1:
+            if coordXTopLeft == 0 and pMatrix[i,j]==1:
                 coordXTopLeft = i
-            if coordYTopLeft == 0 and pMatrix[i,j]=1:
+            if coordYTopLeft == 0 and pMatrix[i,j]==1:
                 coordYTopLeft = j
             i=i+1
             j=j+1
@@ -152,9 +152,9 @@ def roi_bbox(pMatrix):
     j=pHeight
     while i > 0:
         while j > 0:
-            if coordXBottomRight == 0 and pMatrix[i,j]=1:
+            if coordXBottomRight == 0 and pMatrix[i,j]==1:
                 coordXBottomRight = i
-            if coordYBottomRight == 0 and pMatrix[i,j]=1:
+            if coordYBottomRight == 0 and pMatrix[i,j]==1:
                 coordYBottomRight = j
             i=i-1
             j=j-1
