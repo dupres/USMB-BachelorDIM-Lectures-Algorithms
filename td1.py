@@ -14,7 +14,7 @@ def average_above_zero(pList):
     pSum = 0
     pPositiveCount = 0
     pNegativeCount = 0   
-	if len(pList)==0:
+    if len(pList)==0:
         raise ValueError('List length should not be 0')
     #Analysis
     for i in xrange(len(pList)):
@@ -25,7 +25,7 @@ def average_above_zero(pList):
         pSum = pSum + pList[i]
     pAverage = pSum / i
     print('There is '+str(pPositiveCount)+' positive values and '+str(pNegativeCount)+' negative values in this array. The average is '+str(pAverage)+'.')
-	return [pPositiveCount,pNegativeCount,pAverage]
+    return [pPositiveCount,pNegativeCount,pAverage]
 
 ##
 #Small function giving the maximum value of a list
@@ -122,46 +122,46 @@ def roi_bbox(pMatrix):
         raise ValueError('Matrix should exists')
     elif len(pMatrix[0]) == 0:
         raise ValueError('Matrix length should not be 0')
-	if np.sum(pMatrix) = 0:
-		raise ValueError('Matrix should not be empty')
+    if np.sum(pMatrix) = 0:
+        raise ValueError('Matrix should not be empty')
     #Variables initialization
     pLeftTopBoundary = [0,0]
     pRightBottomBoundary = [0,0]
     pWidth = matrix_dimensions(pMatrix)[0]
     pHeight = matrix_dimensions(pMatrix)[1]
-	coordXTopLeft = 0
-	coordYTopLeft = 0
-	coordXBottomRight = 0
-	coordYBottomRight = 0
-	
-	#Calculation
+    coordXTopLeft = 0
+    coordYTopLeft = 0
+    coordXBottomRight = 0
+    coordYBottomRight = 0
+    
+    #Calculation
     i=0
     j=0
-	while i < pWidth:
-		while j<pHeight:
-			if coordXTopLeft = 0 and pMatrix[i,j]=1:
-				coordXTopLeft = i
-			if coordYTopLeft = 0 and pMatrix[i,j]=1:
-				coordYTopLeft = j
-			i=i+1
-			j=j+1
-			if coordXTopLeft != 0 and coordYTopLeft != 0:
-				i = pWidth
-				j = pHeight
-	i=pWidth
-	j=pHeight
-	while i > 0:
-		while j > 0:
-			if coordXBottomRight = 0 and pMatrix[i,j]=1:
-				coordXBottomRight = i
-			if coordYBottomRight = 0 and pMatrix[i,j]=1:
-				coordYBottomRight = j
-			i=i-1
-			j=j-1
-			if coordXBottomRight != 0 and coordYBottomRight != 0:
-				i = 0
-				j = 0
-	
+    while i < pWidth:
+        while j<pHeight:
+            if coordXTopLeft = 0 and pMatrix[i,j]=1:
+                coordXTopLeft = i
+            if coordYTopLeft = 0 and pMatrix[i,j]=1:
+                coordYTopLeft = j
+            i=i+1
+            j=j+1
+            if coordXTopLeft != 0 and coordYTopLeft != 0:
+                i = pWidth
+                j = pHeight
+    i=pWidth
+    j=pHeight
+    while i > 0:
+        while j > 0:
+            if coordXBottomRight = 0 and pMatrix[i,j]=1:
+                coordXBottomRight = i
+            if coordYBottomRight = 0 and pMatrix[i,j]=1:
+                coordYBottomRight = j
+            i=i-1
+            j=j-1
+            if coordXBottomRight != 0 and coordYBottomRight != 0:
+                i = 0
+                j = 0
+    
     # while i < pWidth:
         # while j < pHeight:
             # if pMatrix[i,j]<>0 and pLeftTopBoundary[0] == 0 and pLeftTopBoundary[1] == 0:
