@@ -122,7 +122,7 @@ def roi_bbox(pMatrix):
         raise ValueError('Matrix should exists')
     elif len(pMatrix[0]) == 0:
         raise ValueError('Matrix length should not be 0')
-    if np.sum(pMatrix) = 0:
+    if np.sum(pMatrix) == 0:
         raise ValueError('Matrix should not be empty')
     #Variables initialization
     pLeftTopBoundary = [0,0]
