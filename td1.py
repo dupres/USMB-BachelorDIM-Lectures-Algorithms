@@ -9,11 +9,13 @@ import numpy
 
 ##
 #Small function describing an input list
-def list_analysis(pList):
+def average_above_zero(pList):
     #Variables initialization
     pSum = 0
     pPositiveCount = 0
     pNegativeCount = 0   
+	if len(pList)==0:
+        raise ValueError('List length should not be 0')
     #Analysis
     for i in xrange(len(pList)):
         if pList[i]>0:
@@ -23,12 +25,13 @@ def list_analysis(pList):
         pSum = pSum + pList[i]
     pAverage = pSum / i
     print('There is '+str(pPositiveCount)+' positive values and '+str(pNegativeCount)+' negative values in this array. The average is '+str(pAverage)+'.')
+	return [pPositiveCount,pNegativeCount,pAverage]
 
 ##
 #Small function giving the maximum value of a list
 #@param input list : a list to analyze
 #throws an exception (ValueError) on an empty list
-def list_max(pList):
+def max_value(pList):
     #First check
     if len(pList)==0:
         raise ValueError('List length should not be 0')
@@ -47,7 +50,7 @@ def list_max(pList):
 #Small function that reverse a list
 #@param input list : a lis to reverse
 #throws an exception (ValueError) on an empty list
-def list_reverse(pList):
+def reverse_table(pList):
     #First check
     if len(pList)==0:
         raise ValueError('List length should not be 0')
@@ -113,31 +116,62 @@ def matrix_dimensions(pMatrix):
 #Finds the boundaries of a square inside a matrix
 #@param input matrix : the matrix to analyze
 #throws an exception (ValueError) on an empty matrix
-def matrix_objectBoundaries(pMatrix):
+def roi_bbox(pMatrix):
     #First check : if matrix width or height is 0
     if len(pMatrix) == 0:
-        raise ValueError('Matrix length should not be 0')
+        raise ValueError('Matrix should exists')
     elif len(pMatrix[0]) == 0:
         raise ValueError('Matrix length should not be 0')
+	if np.sum(pMatrix) = 0:
+		raise ValueError('Matrix should not be empty')
     #Variables initialization
     pLeftTopBoundary = [0,0]
     pRightBottomBoundary = [0,0]
     pWidth = matrix_dimensions(pMatrix)[0]
     pHeight = matrix_dimensions(pMatrix)[1]
-    
+	coordXTopLeft = 0
+	coordYTopLeft = 0
+	coordXBottomRight = 0
+	coordYBottomRight = 0
+	
+	#Calculation
     i=0
     j=0
-    while i < pWidth:
-        while j < pHeight:
-            if pMatrix[i,j]<>0 and pLeftTopBoundary[0] == 0 and pLeftTopBoundary[1] == 0:
-                pLeftTopBoundary = [i,j]
-            if pMatrix[pWidth-i-1,pHeight-j-1]<>0 and pRightBottomBoundary[0] == 0 and pRightBottomBoundary[1] == 0:
-                pRightBottomBoundary = [pWidth-i-1,pHeight-j-1]
-            j=j+1
-        i=i+1
+	while i < pWidth:
+		while j<pHeight:
+			if coordXTopLeft = 0 and pMatrix[i,j]=1:
+				coordXTopLeft = i
+			if coordYTopLeft = 0 and pMatrix[i,j]=1:
+				coordYTopLeft = j
+			i=i+1
+			j=j+1
+			if coordXTopLeft != 0 and coordYTopLeft != 0:
+				i = pWidth
+				j = pHeight
+	i=pWidth
+	j=pHeight
+	while i > 0:
+		while j > 0:
+			if coordXBottomRight = 0 and pMatrix[i,j]=1:
+				coordXBottomRight = i
+			if coordYBottomRight = 0 and pMatrix[i,j]=1:
+				coordYBottomRight = j
+			i=i-1
+			j=j-1
+			if coordXBottomRight != 0 and coordYBottomRight != 0:
+				i = 0
+				j = 0
+	
+    # while i < pWidth:
+        # while j < pHeight:
+            # if pMatrix[i,j]<>0 and pLeftTopBoundary[0] == 0 and pLeftTopBoundary[1] == 0:
+                # pLeftTopBoundary = [i,j]
+            # if pMatrix[pWidth-i-1,pHeight-j-1]<>0 and pRightBottomBoundary[0] == 0 and pRightBottomBoundary[1] == 0:
+                # pRightBottomBoundary = [pWidth-i-1,pHeight-j-1]
+            # j=j+1
+        # i=i+1
     
-    return [pLeftTopBoundary,pRightBottomBoundary]
-
+    return np.array([[coordXBottomRight,coordYBottomRight], [coordXTopLeft, coordYTopLeft]])
 
 ##
 #Creates a random empty char matrix between 2 and 10 columns and rows
@@ -154,7 +188,7 @@ def create_charmatrix():
 
 ##
 #Fills an input char matrix with an input number of 'X'
-def charmatrix_fillwith(pCharmatrix,pNumberOfFills):
+def random_fill_sparse(pCharmatrix,pNumberOfFills):
     print(pNumberOfFills)
     for i in xrange(pNumberOfFills):
         x = random.randint(0,matrix_dimensions(pCharmatrix)[0]-1)
@@ -168,7 +202,7 @@ def charmatrix_fillwith(pCharmatrix,pNumberOfFills):
 ##
 #Removes whitespaces in a string
 #@param input string : the string to check
-def remove_whitespaces(pString):
+def remove_whitespace(pString):
     pLength = len(pString)
     i = 0
     while i < pLength :
