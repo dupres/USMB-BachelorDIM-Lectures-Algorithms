@@ -34,5 +34,5 @@ def test_average_above_zero_m1():
 	assert td1.average_above_zero([-1]) == [0,1,-1]
 
 def test_roi_bbox():
-	assert td1.roi_bbox([[0,0,0],[0,1,0],[0,0,0]]).all() == [[1,1],[1,1]].all()
+	assert td1.roi_bbox([[0,0,0],[0,1,0],[0,0,0]]).all() == numpy.array([[1,1],[1,1]]).all()
 
