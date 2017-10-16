@@ -23,10 +23,7 @@ def average_above_zero(pList):
         else:
             pNegativeCount = pNegativeCount +1
         pSum = pSum + pList[i]
-    if i <> 0:
-        pAverage = pSum / i
-    else:
-        pAverage = pSum
+    pAverage = pSum / i
     print('There is '+str(pPositiveCount)+' positive values and '+str(pNegativeCount)+' negative values in this array. The average is '+str(pAverage)+'.')
     return [pPositiveCount,pNegativeCount,pAverage]
 
@@ -128,10 +125,8 @@ def roi_bbox(pMatrix):
     if numpy.sum(pMatrix) == 0:
         raise ValueError('Matrix should not be empty')
     #Variables initialization
-    pLeftTopBoundary = [0,0]
-    pRightBottomBoundary = [0,0]
-    pWidth = matrix_dimensions(pMatrix)[1]
-    pHeight = matrix_dimensions(pMatrix)[0]
+    pWidth = matrix_dimensions(pMatrix)[0]
+    pHeight = matrix_dimensions(pMatrix)[1]
     coordXTopLeft = 0
     coordYTopLeft = 0
     coordXBottomRight = 0
@@ -142,22 +137,22 @@ def roi_bbox(pMatrix):
     j=0
     while i < pWidth:
         while j<pHeight:
-            if coordXTopLeft == 0 and pMatrix[i][j]==1:
+            if coordXTopLeft == 0 and pMatrix[i,j]==1:
                 coordXTopLeft = i
-            if coordYTopLeft == 0 and pMatrix[i][j]==1:
+            if coordYTopLeft == 0 and pMatrix[i,j]==1:
                 coordYTopLeft = j
             j=j+1
             if coordXTopLeft != 0 and coordYTopLeft != 0:
                 i = pWidth
                 j = pHeight
         i=i+1
-    i=pWidth
-    j=pHeight
+    i=pWidth-1
+    j=pHeight-1
     while i > 0:
         while j > 0:
-            if coordXBottomRight == 0 and pMatrix[i][j]==1:
+            if coordXBottomRight == 0 and pMatrix[i,j]==1:
                 coordXBottomRight = i
-            if coordYBottomRight == 0 and pMatrix[i][j]==1:
+            if coordYBottomRight == 0 and pMatrix[i,j]==1:
                 coordYBottomRight = j
             j=j-1
             if coordXBottomRight != 0 and coordYBottomRight != 0:
@@ -217,5 +212,3 @@ def remove_whitespace(pString):
 
 
 #-------------------------------------------------------------------
-
-print(remove_whitespace("Ceci est une phrase avec plein d'espaces."))
