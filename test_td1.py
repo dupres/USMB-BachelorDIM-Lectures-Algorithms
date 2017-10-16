@@ -1,4 +1,5 @@
 import td1
+import numpy
 
 def test_remove_whitespace_a_b():
     assert td1.remove_whitespace("a b") == "ab"
