@@ -28,7 +28,7 @@ def test_max_value_m1_m5():
     assert td1.max_value([-1,-5]) == (-1,0)
 
 def test_average_above_zero_0_m1_2():
-	assert td1.average_above_zero([1,2,0]) == [1,1,0.5]
+	assert td1.average_above_zero([1,2,0]) == [2,1,1]
 	
 def test_average_above_zero_m1():
 	assert td1.average_above_zero([-1]) == [0,1,-1]
