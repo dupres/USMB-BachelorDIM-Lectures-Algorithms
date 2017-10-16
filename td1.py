@@ -139,16 +139,37 @@ def roi_bbox(pMatrix):
     i=0
     j=0
     while i < pWidth:
-        while j<pHeight:
-            if coordXTopLeft == 0 and pMatrix[i][j]==1:
-                coordXTopLeft = i
-            if coordYTopLeft == 0 and pMatrix[i][j]==1:
-                coordYTopLeft = j
-            j=j+1
+        while j < pHeight:
+            if pMatrix[i][j]==1:
+                if coordXTopLeft == 0 :
+                    coordXTopLeft = i
+                if coordYTopLeft == 0 :
+                    coordYTopLeft = j
             if coordXTopLeft != 0 and coordYTopLeft != 0:
                 i = pWidth
                 j = pHeight
+            
+            j=j+1
+        j=0
         i=i+1
+    
+    
+    i=pWidth-1
+    j=pHeight-1
+    while i > 0:
+        while j > 0:
+            if pMatrix[i][j]==1:
+                if coordXBottomRight == 0 :
+                    coordXBottomRight = i
+                if coordYBottomRight == 0 :
+                    coordYBottomRight = j
+            if coordXBottomRight != 0 and coordYBottomRight != 0:
+                i = 0
+                j = 0
+            j=j-1
+        j=pHeight-1
+        i=i-1  
+    
     i=pWidth-1
     j=pHeight-1
     while i > 0:
@@ -157,10 +178,10 @@ def roi_bbox(pMatrix):
                 coordXBottomRight = i
             if coordYBottomRight == 0 and pMatrix[i][j]==1:
                 coordYBottomRight = j
-            j=j-1
             if coordXBottomRight != 0 and coordYBottomRight != 0:
                 i = 0
                 j = 0
+            j=j-1
         i=i-1
     
     # while i < pWidth:
@@ -172,7 +193,7 @@ def roi_bbox(pMatrix):
             # j=j+1
         # i=i+1
     
-    return numpy.array([[coordXBottomRight,coordYBottomRight], [coordXTopLeft, coordYTopLeft]])
+    return numpy.array([[coordXTopLeft,coordYTopLeft], [coordXBottomRight, coordYBottomRight]])
 
 ##
 #Creates a random empty char matrix between 2 and 10 columns and rows
@@ -213,5 +234,4 @@ def remove_whitespace(pString):
         i = i+1
     return pString
 
-
-#-------------------------------------------------------------------
+print (roi_bbox([[0,0,0],[0,1,0],[0,0,0]]))
