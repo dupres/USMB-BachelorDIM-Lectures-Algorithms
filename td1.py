@@ -130,8 +130,8 @@ def roi_bbox(pMatrix):
     #Variables initialization
     pLeftTopBoundary = [0,0]
     pRightBottomBoundary = [0,0]
-    pWidth = matrix_dimensions(pMatrix)[0]
-    pHeight = matrix_dimensions(pMatrix)[1]
+    pWidth = matrix_dimensions(pMatrix)[1]
+    pHeight = matrix_dimensions(pMatrix)[0]
     coordXTopLeft = 0
     coordYTopLeft = 0
     coordXBottomRight = 0
