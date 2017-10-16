@@ -23,7 +23,10 @@ def average_above_zero(pList):
         else:
             pNegativeCount = pNegativeCount +1
         pSum = pSum + pList[i]
-    pAverage = pSum / i
+    if i <> 0 :
+        pAverage = pSum / i
+    else :
+        pAverage = pSum
     print('There is '+str(pPositiveCount)+' positive values and '+str(pNegativeCount)+' negative values in this array. The average is '+str(pAverage)+'.')
     return [pPositiveCount,pNegativeCount,pAverage]
 
