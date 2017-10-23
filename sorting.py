@@ -17,16 +17,7 @@ Created on Mon Sep 18 08:45:09 2017
 # e) 28 comparisons are applied
 # 
 # f) This algorithm is one of the simplest
-# 
-# g) 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
+#  
 
 import random
 import numpy
@@ -78,6 +69,3 @@ def bubble_sort(pMatrix,pOrder):
                     pMatrix[j]=pMatrix[j+1]
                     pMatrix[j+1]=temp
     return pMatrix
-
-print (bubble_sort(create_random_array(20),"asc"))
-
